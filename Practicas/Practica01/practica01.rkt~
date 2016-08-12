@@ -1,0 +1,7 @@
+#lang plai
+
+;EJERCICIO 1
+
+(define (ec-lin a b)
+	b
+)
