@@ -69,5 +69,45 @@
       (cons (binario elem) empty)
       (cons (binario elem) (aux-binarios (car lista) (cdr lista)))))
 
+;b) Escribir una función (primos l) que dada una lista de números, regrese otra conteniendo
+;únicamente los números primos de la original
+(define (primos lista)
+  (if (empty? lista)
+      empty
+      (primos-aux (car lista) (cdr lista))))
 
-  
+(define (primos-aux elem lista)
+  (if (empty? lista)
+      (if (= 2 (length (divs elem)))
+          (cons elem empty)
+          empty)
+      (if (= 2 (length (divs elem)))
+          (cons elem (primos-aux (car lista) (cdr lista)))
+          (primos-aux (car lista) (cdr lista)))))
+
+(define (lista-hasta x y)
+  (if(< x y)
+     '()
+     (cons y (lista-hasta x (+ 1 y)))))
+
+(define (filtra-divs x lista)
+  (if (empty? lista)
+      '()
+      (if(= (modulo x (car lista)) 0)
+         (cons (car lista) (filtra-divs x (cdr lista)))
+         (filtra-divs x (cdr lista)))))
+
+(define (divs n)
+  (filtra-divs n (lista-hasta n 1)))
+
+
+;c) Escribir una función (reversar l) y una función (reversal l) que devuelvan la reversa
+;de una lista. Usando la función foldr y foldl respectivamente
+(define (remove-last lista)
+    (if (empty?(cdr lista))
+        '()
+        (cons (car lista) (remove-last (cdr lista)))))
+
+;reversal
+(define (reversal lista)
+  (foldl cons '() lista))
