@@ -26,7 +26,10 @@
          (s-digitos (/ (- n (modulo n 10)) 10)))))
 
 ;5)Inversión de números
-(define (invierte n)
-  (if (< n 10)
-      n
-      (+ ())))
+(define (invertir n)
+  (invertir-aux n 0))
+
+(define (invertir-aux n m)
+  (if (= n 0)
+      m
+      (invertir-aux (quotient n 10) (+ (* m 10) (modulo n 10)))))
