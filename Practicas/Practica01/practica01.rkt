@@ -111,3 +111,34 @@
 ;reversal
 (define (reversal lista)
   (foldl cons '() lista))
+
+;reversar
+(define (reversar lista)
+  lista)
+
+;8)Operaciones sobre listas
+;a)append
+(define (concatena lista1 lista2)
+  (if(empty? lista1)
+     (if(empty? lista2)
+        empty
+        (cons (car lista2) (concatena '() (cdr lista2))))
+     (cons (car lista1) (concatena (cdr lista1) lista2))))
+
+;b)map
+(define (mapea f lista)
+  (if(procedure? f)
+     (if(empty? lista)
+        '()
+        (cons (f (car lista)) (mapea f (cdr lista))))
+     (error 'mapea "No es una funcion")))
+
+;c)filtra
+(define (filtra pred lista)
+  (if(procedure? pred)
+     (if(empty? lista)
+        '()
+        (if(pred (car lista))
+                 (cons (car lista) (filtra pred (cdr lista)))
+                 (filtra pred (cdr lista))))
+     (error 'filtra "No es un predicado")))
