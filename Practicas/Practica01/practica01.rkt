@@ -33,3 +33,41 @@
   (if (= n 0)
       m
       (invertir-aux (quotient n 10) (+ (* m 10) (modulo n 10)))))
+
+;Eliminar duplicados
+(define (elimina-dup lista)
+  (if (empty? lista)
+      '()
+      (elimina-dup-aux (car lista) (cdr lista))))
+
+(define (elimina-dup-aux elem lista)
+  (if (empty? lista)
+      (cons elem lista)
+      (if (eq? elem (car lista))
+          (elimina-dup-aux (car lista) (cdr lista))
+          (cons elem (elimina-dup-aux (car lista) (cdr lista))))))
+
+;7) Funciones sobre listas
+;a)a) Escribir una función (binarios l) que dada una lista de números, regrese otra con la
+;representación binaria de cada uno de ellos
+(define (binario n)
+  (if(= n 0)
+     "0"
+     (binario-aux n)))
+(define (binario-aux n)
+  (if (= n 0)
+      ""
+      (string-append (binario-aux (quotient n 2)) (number->string (modulo n 2)))))
+
+(define (binarios lista)
+  (if (empty? lista)
+      empty
+      (aux-binarios (car lista) (cdr lista))))
+
+(define (aux-binarios elem lista)
+  (if (empty? lista)
+      (cons (binario elem) empty)
+      (cons (binario elem) (aux-binarios (car lista) (cdr lista)))))
+
+
+  
