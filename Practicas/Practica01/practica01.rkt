@@ -125,7 +125,7 @@
         (cons (car lista2) (concatena '() (cdr lista2))))
      (cons (car lista1) (concatena (cdr lista1) lista2))))
 
-;b)map
+;b)mapea
 (define (mapea f lista)
   (if(procedure? f)
      (if(empty? lista)
@@ -142,3 +142,34 @@
                  (cons (car lista) (filtra pred (cdr lista)))
                  (filtra pred (cdr lista))))
      (error 'filtra "No es un predicado")))
+
+;d)toma
+(define (toma lista n)
+  (if (>= (length lista) n)
+      (if (= n 0)
+          '()
+          (cons (car lista) (toma (cdr lista) (- n 1))))
+      (error 'toma "La entrada n es mayor que el tamaño de la lista")))
+
+;e)quita
+(define (quita lista n)
+  (if (>= (length lista) n)
+      (if (= n 0)
+          lista
+          (quita (cdr lista) (- n 1)))
+      (error 'quita "La entrada n es mayor que el tamaño de la lista")))
+
+;9)let lambda
+;a)
+(let ([mayor (lambda (a b)
+               (if (< a b)
+                   b
+                   a))])
+  (mayor 1834 1729))
+
+;b)
+(letrec ([suman (lambda (n)
+                  (if (= n 1)
+                      n
+                      (+ n (suman (- n 1)))))])
+  (suman 100))
