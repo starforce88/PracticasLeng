@@ -48,7 +48,7 @@
           (cons elem (elimina-dup-aux (car lista) (cdr lista))))))
 
 ;7) Funciones sobre listas
-;a)a) Escribir una función (binarios l) que dada una lista de números, regrese otra con la
+;a) Escribir una función (binarios l) que dada una lista de números, regrese otra con la
 ;representación binaria de cada uno de ellos
 (define (binario n)
   (if(= n 0)
@@ -113,8 +113,7 @@
   (foldl cons '() lista))
 
 ;reversar
-(define (reversar lista)
-  lista)
+
 
 ;8)Operaciones sobre listas
 ;a)append
